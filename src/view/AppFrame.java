@@ -19,7 +19,7 @@ public class AppFrame extends JFrame{
     /**
      * Constructor used to call functions in order to create an environment to run
      * the application.
-     * [1] Thompson, 2020
+     * [1] (Thompson, 2020)
      */
     public AppFrame()throws HeadlessException {
         super("Project & Task Manager");

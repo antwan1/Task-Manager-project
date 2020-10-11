@@ -13,7 +13,7 @@ public class Start {
      * The purpose of this standard program is to run GUI application based on JavaSwing library
      * Thus, creating a thread to run the application
      * @param ptm parameters passed to the program on initiation
-     * [1] Thompson, 2020
+     * [1] (Thompson, 2020)
      */
     public static void main(String[] ptm) {
         SwingUtilities.invokeLater(() -> new AppFrame());
