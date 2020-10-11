@@ -4,7 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ProjectTreePanel extends JPanel{
+    /**
+     * just a test
+     * @param title
+     * @param width
+     * @param length
+     * @param black
+     */
+    public ProjectTreePanel(String title, int width, int length, Color black) {
 
-    public ProjectTreePanel(String projects_and_tasks, int i, int i1, Color black) {
     }
 }

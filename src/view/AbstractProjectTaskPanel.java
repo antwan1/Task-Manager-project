@@ -12,6 +12,7 @@ public class AbstractProjectTaskPanel extends JPanel {
 
     static final int FIELD_START = 100;
     private final JTextField titleEntry;
+    private final JTextField descriptionEntry;
 
     /**
      * Constructor used to add necessary text and components to the panels on left hand side
@@ -41,10 +42,16 @@ public class AbstractProjectTaskPanel extends JPanel {
         titleLabel.setFocusable(false);
         this.add(titleLabel);
         titleEntry = new JTextField();
-        titleEntry.setBounds(FIELD_START, 18, 200, 20);
+        titleEntry.setBounds(FIELD_START, 20, 200, 20);
         this.add(titleEntry);
-
-
+        
+        JLabel descriptionLabel = new JLabel("Description:");
+        descriptionLabel.setBounds(5, 40, FIELD_START - 2, 15);
+        descriptionLabel.setFocusable(false);
+        this.add(descriptionLabel);
+        descriptionEntry = new JTextField();
+        descriptionEntry.setBounds(FIELD_START, 40, 340, 20);
+        this.add(descriptionEntry);
 
 
     }
