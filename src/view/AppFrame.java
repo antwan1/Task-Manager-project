@@ -51,7 +51,7 @@ public class AppFrame extends JFrame{
     }
 
     /**
-     * The following functions are used to add different components to the main frame
+     * The following function is used to add different components to the main frame
      */
     private void frameLayout() {
         Container panel = this.getContentPane();
