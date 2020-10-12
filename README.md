@@ -6,8 +6,8 @@
 # Logs
 [1] 11-10-2020 13:20
 @manmohansingh -
-    Creating frame and layout for the project and task manager user-interface;
-    Added project panel details to the frame alongside working on the other panels 
-    to be used as an input screen for tasks, sub-tasks and sub-projects.
+   Creating frame and layout for the project and task manager user-interface;
+   Added project panel details to the frame alongside working on the other panels 
+   to be used as an input screen for tasks, sub-tasks and sub-projects.
 
 
