@@ -56,16 +56,16 @@ public class AppFrame extends JFrame{
     private void frameLayout() {
         Container panel = this.getContentPane();
         final int leftColumnWidth = Math.max(ProjectPanel.MIN_WIDTH, 5);
-        final int leftColumnStart = 5;
+        final int leftColumnEnd = this.width - leftColumnWidth - 5;
         projects_and_tasks = new ProjectTreePanel("Projects and Tasks",
-                leftColumnStart + 10, height - 30, Color.BLACK);
-        projects_and_tasks.setLocation(5, 5);
+                leftColumnEnd - 10, height - 30, Color.BLACK);
+        projects_and_tasks.setLocation(460, 5);
         projects_and_tasks.setFocusable(false);
         panel.add(projects_and_tasks);
 
         project_entry = new ProjectPanel("Project Details", leftColumnWidth,
                 ProjectPanel.MIN_HEIGHT, Color.BLACK);
-        project_entry.setLocation(leftColumnStart, 5);
+        project_entry.setLocation(5, 5);
         project_entry.setFocusable(false);
         panel.add(project_entry);
     }

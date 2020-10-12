@@ -19,8 +19,8 @@ public class AbstractProjectTaskPanel extends JPanel {
      * of the frame, used to accept data from the user
      *
      * @param title adding titles to the panel
-     * @param width assigning the user-defined width to the panel
-     * @param height assigning the user-defined height to the panel
+     * @param width assigning the pre-defined width to the panel
+     * @param height assigning the pre-defined height to the panel
      * @param colour assigning the colour to the text associated with the panel
      *
      * [1] (Thompson, 2020)
