@@ -1,7 +1,7 @@
 package view;
 
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author manmohansingh
@@ -61,6 +61,7 @@ public class AppFrame extends JFrame{
                 leftColumnEnd - 10, height - 30, Color.BLACK);
         projects_and_tasks.setLocation(460, 5);
         projects_and_tasks.setFocusable(false);
+
         panel.add(projects_and_tasks);
 
         project_entry = new ProjectPanel("Project Details", leftColumnWidth,
