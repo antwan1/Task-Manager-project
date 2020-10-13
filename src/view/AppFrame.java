@@ -9,8 +9,8 @@ import javax.swing.*;
  */
 
 public class AppFrame extends JFrame{
-    private final int minWidth = 500;
-    private final int minHeight = 500;
+    private final int minWidth = ProjectTreePanel.MIN_WIDTH + ProjectPanel.MIN_WIDTH;
+    private final int minHeight = Math.max(ProjectTreePanel.MIN_HEIGHT, ProjectPanel.MIN_HEIGHT);
     private int height = 600;
     private int width = 1000;
     private ProjectTreePanel projects_and_tasks;
@@ -68,5 +68,18 @@ public class AppFrame extends JFrame{
         project_entry.setLocation(5, 5);
         project_entry.setFocusable(false);
         panel.add(project_entry);
+    }
+
+    @Override
+    public void paint(Graphics adj){
+        super.paintComponents(adj);
+        if(this.getHeight() !=height || this.getWidth() != width){
+            height = this.getHeight();
+            width = this.getWidth();
+            final int leftColumnWidth = Math.max(ProjectPanel.MIN_WIDTH, 5);
+            final int leftColumnEnd = this.width - leftColumnWidth - 5;
+            projects_and_tasks.setSize(leftColumnEnd - 10, height - 30);
+            project_entry.setLocation(5, 5);
+        }
     }
 }

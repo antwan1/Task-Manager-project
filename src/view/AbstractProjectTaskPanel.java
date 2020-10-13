@@ -13,6 +13,8 @@ public class AbstractProjectTaskPanel extends JPanel {
     static final int FIELD_START = 100;
     private final JTextField titleEntry;
     private final JTextField descriptionEntry;
+//    private final JTextField parentEntry;
+    private String tempTitle = "";
 
     /**
      * Constructor used to add necessary text and components to the panels on left hand side
@@ -52,6 +54,26 @@ public class AbstractProjectTaskPanel extends JPanel {
         descriptionEntry = new JTextField();
         descriptionEntry.setBounds(FIELD_START, 40, 340, 20);
         this.add(descriptionEntry);
+
+//        if(title.equals("Task Details")) {
+//                tempTitle = "Parent Task: ";
+//        } else {
+//            tempTitle = "Parent Project: ";
+//        }
+        JLabel parentLabel = new JLabel("Parent: ");
+        parentLabel.setBounds(5, 60, FIELD_START - 2, 15);
+        parentLabel.setFocusable(false);
+        this.add(parentLabel);
+
+        JLabel creationDate = new JLabel("Creation Date: ");
+        creationDate.setBounds(5, 80, FIELD_START - 2, 15);
+        creationDate.setFocusable(false);
+        this.add(creationDate);
+
+        JLabel dueDate = new JLabel("Due Date: ");
+        dueDate.setBounds(5, 100, FIELD_START - 2, 15);
+        dueDate.setFocusable(false);
+        this.add(dueDate);
 
 
     }
