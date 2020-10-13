@@ -13,7 +13,13 @@
 [2] 13-10-2020 11:00
 @manmohansingh -
     Adding few components to the Project panel, making the window auto adjust the
-    panels on resizing the window.
+    panels on resizing the window by overriding the pre-defined library 
+    paintComponents and paint functions.
+
+[3] 13-10-2020 20:55
+@manmohansingh -
+    Added "Task Details" panel to the left column.
+
  
 
 

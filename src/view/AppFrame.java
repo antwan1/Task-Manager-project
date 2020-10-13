@@ -15,6 +15,7 @@ public class AppFrame extends JFrame{
     private int width = 1000;
     private ProjectTreePanel projects_and_tasks;
     private ProjectPanel project_entry;
+    private TaskPanel task_entry;
 
     /**
      * Constructor used to call functions in order to create an environment to run
@@ -69,6 +70,12 @@ public class AppFrame extends JFrame{
         project_entry.setLocation(5, 5);
         project_entry.setFocusable(false);
         panel.add(project_entry);
+
+        task_entry = new TaskPanel("Task Details", leftColumnWidth,
+                TaskPanel.MIN_HEIGHT, Color.BLACK);
+        task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 10);
+        task_entry.setFocusable(false);
+        panel.add(task_entry);
     }
 
     @Override
@@ -81,6 +88,7 @@ public class AppFrame extends JFrame{
             final int leftColumnEnd = this.width - leftColumnWidth - 5;
             projects_and_tasks.setSize(leftColumnEnd - 10, height - 30);
             project_entry.setLocation(5, 5);
+            task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 10);
         }
     }
 }
