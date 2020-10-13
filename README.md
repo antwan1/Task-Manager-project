@@ -9,6 +9,7 @@
     Creating frame and layout for the project and task manager user-interface;
     Added project panel details to the frame alongside working on the other panels 
     to be used as an input screen for tasks, sub-tasks and sub-projects.
+    
 [2] 13-10-2020 11:00
 @manmohansingh -
     Adding few components to the Project panel, making the window auto adjust the
