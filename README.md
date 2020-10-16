@@ -21,8 +21,14 @@
     Added "Task Details" panel to the left column.
 
 [4] 14-10-2020 10:34
-@manmohansingh
+@manmohansingh -
     Added "Importance" field to Task Details panel.
+
+[5] 16-10-2020 11:49
+@manmohansingh -
+    Added Add, Modify, Find and Delete buttons to the UI
+    alongside some minor changes to the text and field(s)
+    adjustments.
  
 
 
