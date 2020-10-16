@@ -14,6 +14,9 @@ public class ProjectTreePanel extends JPanel{
     public static final int MIN_HEIGHT = 200;
     private final JLabel panelLabel;
     private final JScrollPane scrollPane;
+    private final JButton modifyButton;
+    private final JButton findButton;
+    private final JButton deleteButton;
 
     /**
      * Constructor to create a panel to display projects and tasks in tree format.
@@ -40,14 +43,32 @@ public class ProjectTreePanel extends JPanel{
         scrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.getViewport().setView(projectTree);
-        scrollPane.setBounds(5, 19, width - 10, height - 23);
+        scrollPane.setBounds(5, 20, width - 10, height - 48);
         this.add(scrollPane);
+
+        modifyButton = new JButton("Modify");
+        modifyButton.setBounds((width / 2) - 95, height - 25, 60, 20);
+        modifyButton.setEnabled(false);
+        this.add(modifyButton);
+
+        findButton = new JButton("Find");
+        findButton.setBounds((width / 2) - 30, height - 25, 60, 20);
+        findButton.setEnabled(false);
+        this.add(findButton);
+
+        deleteButton = new JButton("Delete");
+        deleteButton.setBounds((width / 2) + 35, height - 25, 60, 20);
+        deleteButton.setEnabled(false);
+        this.add(deleteButton);
     }
 
     @Override
     protected void paintComponent(Graphics adj){
         super.paintComponent(adj);
         panelLabel.setSize(this.getWidth(), 15);
-        scrollPane.setSize(this.getWidth() - 10, this.getHeight() - 23);
+        scrollPane.setSize(this.getWidth() - 10, this.getHeight() - 48);
+        modifyButton.setBounds((this.getWidth() / 2) - 95, this.getHeight() - 25, 60, 20);
+        findButton.setBounds((this.getWidth() / 2) - 30, this.getHeight() - 25, 60, 20);
+        deleteButton.setBounds((this.getWidth() / 2) + 35, this.getHeight() - 25, 60, 20);
     }
 }

@@ -20,6 +20,9 @@
 @manmohansingh -
     Added "Task Details" panel to the left column.
 
+[4] 14-10-2020 10:34
+@manmohansingh
+    Added "Importance" field to Task Details panel.
  
 
 

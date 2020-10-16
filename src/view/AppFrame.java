@@ -9,8 +9,10 @@ import java.awt.*;
  */
 
 public class AppFrame extends JFrame{
-    private final int minWidth = ProjectTreePanel.MIN_WIDTH + ProjectPanel.MIN_WIDTH;
-    private final int minHeight = Math.max(ProjectTreePanel.MIN_HEIGHT, ProjectPanel.MIN_HEIGHT);
+    private final int minWidth = Math.max(TaskPanel.MIN_WIDTH, ProjectPanel.MIN_WIDTH) +
+            ProjectTreePanel.MIN_WIDTH;
+    private final int minHeight = Math.max(TaskPanel.MIN_HEIGHT, ProjectPanel.MIN_HEIGHT) +
+            ProjectTreePanel.MIN_HEIGHT;
     private int height = 600;
     private int width = 1000;
     private ProjectTreePanel projects_and_tasks;
@@ -62,7 +64,6 @@ public class AppFrame extends JFrame{
                 leftColumnEnd - 10, height - 30, Color.BLACK);
         projects_and_tasks.setLocation(460, 5);
         projects_and_tasks.setFocusable(false);
-
         panel.add(projects_and_tasks);
 
         project_entry = new ProjectPanel("Project Details", leftColumnWidth,
@@ -81,10 +82,11 @@ public class AppFrame extends JFrame{
     @Override
     public void paint(Graphics adj){
         super.paintComponents(adj);
-        if(this.getHeight() !=height || this.getWidth() != width){
+        if(this.getHeight() != height || this.getWidth() != width){
             height = this.getHeight();
             width = this.getWidth();
-            final int leftColumnWidth = Math.max(ProjectPanel.MIN_WIDTH, 5);
+            final int leftColumnWidth = Math.max(ProjectPanel.MIN_WIDTH,
+                    TaskPanel.MIN_WIDTH);
             final int leftColumnEnd = this.width - leftColumnWidth - 5;
             projects_and_tasks.setSize(leftColumnEnd - 10, height - 30);
             project_entry.setLocation(5, 5);
