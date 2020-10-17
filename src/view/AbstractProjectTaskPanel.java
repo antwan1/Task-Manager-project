@@ -1,20 +1,26 @@
 package view;
 
+import model.Model;
+import model.data.Project;
+
 import javax.swing.*;
+import javax.swing.tree.TreeNode;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 
 /**
  * @author manmohansingh
  * @version 11/10/2020 12:26
  */
 
-public class AbstractProjectTaskPanel extends JPanel {
-
+public abstract class AbstractProjectTaskPanel extends JPanel {
+    protected final Model model;
     static final int FIELD_START = 100;
     private final JTextField titleEntry;
     private final JTextField descriptionEntry;
-    private final JButton addButton;
-    private final JComboBox<Object> parentEntry;
+    protected final JButton addButton;
+    private final JComboBox<Project> parentEntry;
+    protected final JButton modifyButton;
 
     /**
      * Constructor used to add necessary text and components to the panels on left hand side
@@ -28,7 +34,8 @@ public class AbstractProjectTaskPanel extends JPanel {
      * [1] (Thompson, 2020)
      */
 
-    public AbstractProjectTaskPanel(String title, int width, int height, Color colour) {
+    public AbstractProjectTaskPanel(String title, Model model, int width, int height, Color colour) {
+        this.model = model;
         setLayout(null);
         this.setSize(width, height);
         this.setBorder(BorderFactory.createLineBorder(colour));
@@ -60,23 +67,53 @@ public class AbstractProjectTaskPanel extends JPanel {
         parentLabel.setFocusable(false);
         this.add(parentLabel);
         parentEntry = new JComboBox<>();
+        parentEntry.setModel(model.getProjectComboBoxModel());
         parentEntry.setBounds(FIELD_START, 60, 240, 20);
         this.add(parentEntry);
 
-        JLabel creationDate = new JLabel("Date & Time: ");
-        creationDate.setBounds(5, 80, FIELD_START - 2, 15);
-        creationDate.setFocusable(false);
-        this.add(creationDate);
+        JLabel creation_Date = new JLabel("Date & Time: ");
+        creation_Date.setBounds(5, 80, FIELD_START - 2, 15);
+        creation_Date.setFocusable(false);
+        this.add(creation_Date);
 
-        JLabel dueDate = new JLabel("Due Date & Time: ");
-        dueDate.setBounds(5, 100, FIELD_START + 15, 15);
-        dueDate.setFocusable(false);
-        this.add(dueDate);
+        JLabel due_Date = new JLabel("Due Date & Time: ");
+        due_Date.setBounds(5, 100, FIELD_START + 15, 15);
+        due_Date.setFocusable(false);
+        this.add(due_Date);
 
         addButton = new JButton("Add");
         addButton.setBounds(width - 65, height - 25, 60, 20);
         addButton.setEnabled(true);
-//        addButton.addActionListener(this::addProjectTask);
+        addButton.addActionListener(this::addProjectTask);
         this.add(addButton);
+
+        modifyButton = new JButton("Modify");
+        modifyButton.setBounds(width - 65, height - 25, 60, 20);
+        modifyButton.setEnabled(false);
+        modifyButton.setVisible(false);
+        modifyButton.addActionListener(this::modifyProjectTask);
+        this.add(modifyButton);
+
+        model.addSelectionListener(this::treeSelectionChanged);
     }
+
+    abstract void treeSelectionChanged(TreeNode treeNode);
+
+    private void addProjectTask(ActionEvent e) {
+        String title = titleEntry.getText();
+        String description = descriptionEntry.getText();
+        Project parent = (Project) parentEntry.getSelectedItem();
+        addProjectTask(title, description, parent);
+    }
+
+    protected abstract void addProjectTask(String title, String description, Project parent);
+
+    private void modifyProjectTask(ActionEvent actionEvent) {
+        String title = titleEntry.getText();
+        String description = descriptionEntry.getText();
+        Project parent = (Project) parentEntry.getSelectedItem();
+        modifyProjectTask(title, description, parent);
+    }
+
+    protected abstract void modifyProjectTask(String title, String description, Project parent);
 }

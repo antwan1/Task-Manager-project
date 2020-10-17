@@ -1,5 +1,8 @@
 package view;
 
+import model.Model;
+import model.data.Task;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,24 +13,25 @@ import java.awt.*;
 
 public class AppFrame extends JFrame{
     private final int minWidth = Math.max(TaskPanel.MIN_WIDTH, ProjectPanel.MIN_WIDTH) +
-            ProjectTreePanel.MIN_WIDTH;
+            ErrorPanel.MIN_WIDTH + ProjectTreePanel.MIN_WIDTH + 100;
     private final int minHeight = Math.max(TaskPanel.MIN_HEIGHT, ProjectPanel.MIN_HEIGHT) +
-            ProjectTreePanel.MIN_HEIGHT;
+            ErrorPanel.MIN_HEIGHT + ProjectTreePanel.MIN_HEIGHT + 200;
     private int height = 600;
     private int width = 1000;
     private ProjectTreePanel projects_and_tasks;
     private ProjectPanel project_entry;
     private TaskPanel task_entry;
+    private ErrorPanel errorPanel;
 
     /**
      * Constructor used to call functions in order to create an environment to run
      * the application.
      * [1] (Thompson, 2020)
      */
-    public AppFrame()throws HeadlessException {
+    public AppFrame(Model model) throws HeadlessException {
         super("Project & Task Manager");
         mainFrame();
-        frameLayout();
+        frameLayout(model);
         this.setVisible(true);
     }
 
@@ -56,27 +60,33 @@ public class AppFrame extends JFrame{
     /**
      * The following function is used to add different components to the main frame
      */
-    private void frameLayout() {
+    private void frameLayout(Model model) {
         Container panel = this.getContentPane();
         final int leftColumnWidth = Math.max(ProjectPanel.MIN_WIDTH, 5);
         final int leftColumnEnd = this.width - leftColumnWidth - 5;
-        projects_and_tasks = new ProjectTreePanel("Projects and Tasks",
+        projects_and_tasks = new ProjectTreePanel("Projects and Tasks", model,
                 leftColumnEnd - 10, height - 30, Color.BLACK);
         projects_and_tasks.setLocation(460, 5);
         projects_and_tasks.setFocusable(false);
         panel.add(projects_and_tasks);
 
-        project_entry = new ProjectPanel("Project Details", leftColumnWidth,
+        project_entry = new ProjectPanel("Project Details", model, leftColumnWidth,
                 ProjectPanel.MIN_HEIGHT, Color.BLACK);
         project_entry.setLocation(5, 5);
         project_entry.setFocusable(false);
         panel.add(project_entry);
 
-        task_entry = new TaskPanel("Task Details", leftColumnWidth,
+        task_entry = new TaskPanel("Task Details", model, leftColumnWidth,
                 TaskPanel.MIN_HEIGHT, Color.BLACK);
         task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 10);
         task_entry.setFocusable(false);
         panel.add(task_entry);
+
+        final int originYAxis = ProjectPanel.MIN_HEIGHT + TaskPanel.MIN_HEIGHT + 10;
+        errorPanel = new ErrorPanel(leftColumnWidth, height - originYAxis - 30, model.errorMessages());
+        errorPanel.setLocation(5, originYAxis + 5);
+        errorPanel.setFocusable(false);
+        this.add(errorPanel);
     }
 
     @Override
@@ -91,6 +101,9 @@ public class AppFrame extends JFrame{
             projects_and_tasks.setSize(leftColumnEnd - 10, height - 30);
             project_entry.setLocation(5, 5);
             task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 10);
+            final int originYAxis = errorPanel.getY();
+            errorPanel.setBounds(5, originYAxis, leftColumnWidth,
+                        this.getHeight() - originYAxis - 25);
         }
     }
 }

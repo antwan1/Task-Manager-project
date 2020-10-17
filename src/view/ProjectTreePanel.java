@@ -1,7 +1,13 @@
 package view;
 
+import model.Model;
+
 import javax.swing.*;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.tree.TreeNode;
 import java.awt.*;
+
+import static javax.swing.tree.TreeSelectionModel.SINGLE_TREE_SELECTION;
 
 /**
  * @author manmohansingh
@@ -10,11 +16,13 @@ import java.awt.*;
 
 public class ProjectTreePanel extends JPanel{
 
+    private final Model model;
     public static final int MIN_WIDTH = 200;
     public static final int MIN_HEIGHT = 200;
     private final JLabel panelLabel;
     private final JScrollPane scrollPane;
     private final JButton modifyButton;
+    private final JTree projectTree;
     private final JButton findButton;
     private final JButton deleteButton;
 
@@ -27,7 +35,8 @@ public class ProjectTreePanel extends JPanel{
      * @param colour parameter assigning the colour to the text in the panel
      */
 
-    public ProjectTreePanel(String title, int width, int height, Color colour) {
+    public ProjectTreePanel(String title, Model model, int width, int height, Color colour) {
+        this.model = model;
         this.setLayout(null);
         this.setSize(width, height);
         this.setBorder(BorderFactory.createLineBorder(colour));
@@ -38,8 +47,10 @@ public class ProjectTreePanel extends JPanel{
         panelLabel.setFocusable(false);
         this.add(panelLabel);
         
-        JTree projectTree = new JTree();
+        projectTree = new JTree(model.getProjectTreeModel());
         projectTree.setRootVisible(false);
+        projectTree.getSelectionModel().setSelectionMode(SINGLE_TREE_SELECTION);
+        projectTree.addTreeSelectionListener(this::treeSelection);
         scrollPane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPane.getViewport().setView(projectTree);
@@ -60,6 +71,12 @@ public class ProjectTreePanel extends JPanel{
         deleteButton.setBounds((width / 2) + 35, height - 25, 60, 20);
         deleteButton.setEnabled(false);
         this.add(deleteButton);
+    }
+
+    private void treeSelection(TreeSelectionEvent treeSelectionEvent) {
+        TreeNode selectedItem = (TreeNode) projectTree.getLastSelectedPathComponent();
+        modifyButton.setEnabled(selectedItem != null);
+        model.setSelection(selectedItem);
     }
 
     @Override

@@ -1,3 +1,4 @@
+import model.Model;
 import view.AppFrame;
 import javax.swing.*;
 
@@ -16,6 +17,6 @@ public class Start {
      * [1] (Thompson, 2020)
      */
     public static void main(String[] ptm) {
-        SwingUtilities.invokeLater(() -> new AppFrame());
+        SwingUtilities.invokeLater(() -> new AppFrame(new Model()));
     }
 }
