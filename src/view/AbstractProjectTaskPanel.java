@@ -7,6 +7,9 @@ import javax.swing.*;
 import javax.swing.tree.TreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilCalendarModel;
@@ -24,9 +27,7 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
     protected final JButton addButton;
     private final JComboBox<Project> parentEntry;
     protected final JButton modifyButton;
-    private final UtilCalendarModel dateModel;
-    private final JSpinner hour;
-    private final JSpinner minutes;
+    private final UtilCalendarModel dueDateModel;
 
     /**
      * Constructor used to add necessary text and components to the panels on left hand side
@@ -53,11 +54,11 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
         this.add(panelLabel);
 
         JLabel titleLabel = new JLabel("Title:");
-        titleLabel.setBounds(5, 20, FIELD_START - 2, 15);
+        titleLabel.setBounds(5, 22, FIELD_START - 2, 15);
         titleLabel.setFocusable(false);
         this.add(titleLabel);
         titleEntry = new JTextField();
-        titleEntry.setBounds(FIELD_START, 20, 240, 20);
+        titleEntry.setBounds(FIELD_START, 18, 240, 20);
         this.add(titleEntry);
         
         JLabel descriptionLabel = new JLabel("Description:");
@@ -65,7 +66,7 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
         descriptionLabel.setFocusable(false);
         this.add(descriptionLabel);
         descriptionEntry = new JTextField();
-        descriptionEntry.setBounds(FIELD_START, 40, 340, 20);
+        descriptionEntry.setBounds(FIELD_START, 38, 340, 20);
         this.add(descriptionEntry);
 
         JLabel parentLabel = new JLabel("Parent: ");
@@ -74,35 +75,19 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
         this.add(parentLabel);
         parentEntry = new JComboBox<>();
         parentEntry.setModel(model.getProjectComboBoxModel());
-        parentEntry.setBounds(FIELD_START, 60, 240, 20);
+        parentEntry.setBounds(FIELD_START, 58, 240, 20);
         this.add(parentEntry);
 
-        JLabel creation_Date = new JLabel("Date & Time: ");
-        creation_Date.setBounds(5, 80, FIELD_START - 2, 15);
-        creation_Date.setFocusable(false);
-        this.add(creation_Date);
-
-        dateModel = new UtilCalendarModel();
-        JDatePanelImpl datePanel = new JDatePanelImpl(dateModel);
-        JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
-        datePicker.setBounds(FIELD_START, 77, 150, 24);
-        this.add(datePicker);
-
-        hour = new JSpinner(new SpinnerNumberModel(0, 0, 23, 1));
-        hour.setBounds(FIELD_START + 150, 80, 50, 20);
-        this.add(hour);
-        JLabel colon = new JLabel(":");
-        colon.setBounds(FIELD_START + 202, 80, 5, 20);
-        colon.setFocusable(false);
-        this.add(colon);
-        minutes = new JSpinner(new SpinnerNumberModel(0, 0, 59, 1));
-        minutes.setBounds(FIELD_START + 208, 80, 50, 20);
-        this.add(minutes);
-
-        JLabel due_Date = new JLabel("Due Date & Time: ");
-        due_Date.setBounds(5, 100, FIELD_START + 15, 15);
+        JLabel due_Date = new JLabel("Due Date: ");
+        due_Date.setBounds(5, 80, FIELD_START - 2, 15);
         due_Date.setFocusable(false);
         this.add(due_Date);
+
+        dueDateModel = new UtilCalendarModel();
+        JDatePanelImpl dueDatePanel = new JDatePanelImpl(dueDateModel);
+        JDatePickerImpl dueDatePicker = new JDatePickerImpl(dueDatePanel);
+        dueDatePicker.setBounds(FIELD_START, 74, 150, 22);
+        this.add(dueDatePicker);
 
         addButton = new JButton("Add");
         addButton.setBounds(width - 65, height - 25, 60, 20);

@@ -5,6 +5,11 @@ import model.data.Task;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author manmohansingh
@@ -64,6 +69,17 @@ public class AppFrame extends JFrame{
         Container panel = this.getContentPane();
         final int leftColumnWidth = Math.max(ProjectPanel.MIN_WIDTH, 5);
         final int leftColumnEnd = this.width - leftColumnWidth - 5;
+
+        SimpleDateFormat date = new SimpleDateFormat("dd");
+        SimpleDateFormat month = new SimpleDateFormat("MMM");
+        SimpleDateFormat year = new SimpleDateFormat("YYYY");
+
+        JLabel present_day_date = new JLabel("Today's Date: " + (date.format(new Date())) +
+                "-" + (month.format(new Date())) + "-" + (year.format(new Date())));
+        present_day_date.setBounds((leftColumnWidth / 2) + 50, 5, 180, 15);
+        present_day_date.setFocusable(false);
+        this.add(present_day_date);
+
         projects_and_tasks = new ProjectTreePanel("Projects and Tasks", model,
                 leftColumnEnd - 10, height - 30, Color.BLACK);
         projects_and_tasks.setLocation(460, 5);
@@ -72,19 +88,19 @@ public class AppFrame extends JFrame{
 
         project_entry = new ProjectPanel("Project Details", model, leftColumnWidth,
                 ProjectPanel.MIN_HEIGHT, Color.BLACK);
-        project_entry.setLocation(5, 5);
+        project_entry.setLocation(5, 25);
         project_entry.setFocusable(false);
         panel.add(project_entry);
 
         task_entry = new TaskPanel("Task Details", model, leftColumnWidth,
                 TaskPanel.MIN_HEIGHT, Color.BLACK);
-        task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 10);
+        task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 30);
         task_entry.setFocusable(false);
         panel.add(task_entry);
 
         final int originYAxis = ProjectPanel.MIN_HEIGHT + TaskPanel.MIN_HEIGHT + 10;
         errorPanel = new ErrorPanel(leftColumnWidth, height - originYAxis - 30, model.errorMessages());
-        errorPanel.setLocation(5, originYAxis + 5);
+        errorPanel.setLocation(5, originYAxis + 25);
         errorPanel.setFocusable(false);
         this.add(errorPanel);
     }
@@ -99,8 +115,8 @@ public class AppFrame extends JFrame{
                     TaskPanel.MIN_WIDTH);
             final int leftColumnEnd = this.width - leftColumnWidth - 5;
             projects_and_tasks.setSize(leftColumnEnd - 10, height - 30);
-            project_entry.setLocation(5, 5);
-            task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 10);
+            project_entry.setLocation(5, 25);
+            task_entry.setLocation(5, ProjectPanel.MIN_HEIGHT + 30);
             final int originYAxis = errorPanel.getY();
             errorPanel.setBounds(5, originYAxis, leftColumnWidth,
                         this.getHeight() - originYAxis - 25);

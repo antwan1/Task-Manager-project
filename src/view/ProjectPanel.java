@@ -5,6 +5,7 @@ import model.data.Project;
 
 import javax.swing.tree.TreeNode;
 import java.awt.*;
+import java.util.Calendar;
 
 /**
  * @author manmohansingh
@@ -13,7 +14,7 @@ import java.awt.*;
 
 public class ProjectPanel extends AbstractProjectTaskPanel{
     public static final int MIN_WIDTH = 450;
-    public static final int MIN_HEIGHT = 150;
+    public static final int MIN_HEIGHT = 105;
 
     public ProjectPanel(String title, Model model, int width, int height, Color colour) {
         super(title, model, Math.max(MIN_WIDTH, width), Math.max(MIN_HEIGHT, height), colour);

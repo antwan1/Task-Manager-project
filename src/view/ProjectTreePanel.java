@@ -64,12 +64,10 @@ public class ProjectTreePanel extends JPanel{
 
         findButton = new JButton("Find");
         findButton.setBounds((width / 2) - 30, height - 25, 60, 20);
-        findButton.setEnabled(false);
         this.add(findButton);
 
         deleteButton = new JButton("Delete");
         deleteButton.setBounds((width / 2) + 35, height - 25, 60, 20);
-        deleteButton.setEnabled(false);
         this.add(deleteButton);
     }
 

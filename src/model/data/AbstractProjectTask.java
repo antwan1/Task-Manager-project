@@ -1,9 +1,12 @@
 package model.data;
 
+import jdk.dynalink.CallSiteDescriptor;
 import model.utility.Errors;
 import model.utility.Validation;
 
 import javax.swing.tree.TreeNode;
+import java.util.Calendar;
+import java.util.spi.CalendarDataProvider;
 
 /**
  * @author manmohansingh
@@ -56,6 +59,10 @@ public abstract class AbstractProjectTask implements TreeNode {
                 projectOrTask.getTitle() + " name provided."));
         errors.add(Validation.isPresent(description, "No " + projectOrTask.name().toLowerCase()
                 + " description provided."));
+//        errors.add(Validation.isPresent(date, "No " + projectOrTask.name().toLowerCase()
+//                + " creation Date provided."));
+//        errors.add(Validation.isPresent(dueDate, "No " + projectOrTask.name().toLowerCase()
+//                + " due Date Provided."));
         return errors;
     }
 

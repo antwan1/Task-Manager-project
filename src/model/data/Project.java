@@ -3,10 +3,7 @@ package model.data;
 import model.utility.Errors;
 import model.utility.Validation;
 
-import java.util.Enumeration;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Optional;
+import java.util.*;
 import javax.swing.tree.TreeNode;
 
 /**
@@ -20,12 +17,12 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
 
     private final HashMap<String, AbstractProjectTask> children = new HashMap<>();
 
-    private Project(String title, String description) {
-        super(title, description, null);
-    }
-
     private Project(String title, String description, Project parent) {
         super(title, description, parent);
+    }
+
+    public Project(String title, String description) {
+        super(title, description, null);
     }
 
     void add(AbstractProjectTask project) {

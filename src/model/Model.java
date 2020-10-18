@@ -10,6 +10,7 @@ import view.ChangedTreeSelection;
 import javax.swing.*;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreeNode;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.TreeMap;
 import java.util.Vector;
@@ -24,7 +25,8 @@ import java.util.Vector;
 public class Model {
 
     public static final String[] IMP_SELECT = new String[]{"High", "Medium", "Low"};
-    private final Project rootProject = Project.create("ROOT", "Select a project").getObject();
+    private final Project rootProject =
+            Project.create("ROOT", "Select a project").getObject();
     private final ProjectTreeModel projectTree = new ProjectTreeModel(rootProject);
     private final TreeMap<String, Project> projects = new TreeMap<>();
     private final TreeMap<String, Task> tasks = new TreeMap<>();
