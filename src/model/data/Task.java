@@ -16,8 +16,8 @@ import java.util.Enumeration;
 
 public class Task extends AbstractProjectTask implements Comparable<Task>{
 
-    private Task(String title, String description, Project project) {
-        super(title, description, project);
+    private Task(String title, String description, Project project, Calendar dueDate) {
+        super(title, description, project, dueDate);
     }
 
     @Override
@@ -27,7 +27,9 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
 
     @Override
     public String toString() {
-        return getTitle() + ": " + getDescription();
+        String temp = getDueDate().getTime().toString();
+        return String.format(getTitle() + ": " + getDescription() +
+                " (Due on " + temp.substring(4, 10) + temp.substring(temp.lastIndexOf(" ")) + ")");
     }
 
     @Override
@@ -55,12 +57,13 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
         return null;
     }
 
-    public static Validation<Task> create(String title, String description, Project project) {
-        Errors errorMessages = verifyTitleAndDescription(title, description, ProjectOrTask.TASK);
+    public static Validation<Task> create
+            (String title, String description, Project project, Calendar dueDate) {
+        Errors errorMessages = verifyTitleAndDescription(title, description, ProjectOrTask.TASK, dueDate);
         errorMessages.add(project == null ? "No project is provided" : null);
         if(errorMessages.size() != 0) {
             return new Validation<>(errorMessages);
         }
-        return new Validation<>(new Task(title, description, project));
+        return new Validation<>(new Task(title, description, project, dueDate));
     }
 }

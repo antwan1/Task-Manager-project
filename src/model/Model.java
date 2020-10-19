@@ -26,7 +26,7 @@ public class Model {
 
     public static final String[] IMP_SELECT = new String[]{"High", "Medium", "Low"};
     private final Project rootProject =
-            Project.create("ROOT", "Select a project").getObject();
+            Project.create("ROOT", "Select a project", Calendar.getInstance()).getObject();
     private final ProjectTreeModel projectTree = new ProjectTreeModel(rootProject);
     private final TreeMap<String, Project> projects = new TreeMap<>();
     private final TreeMap<String, Task> tasks = new TreeMap<>();
@@ -57,11 +57,11 @@ public class Model {
         return false;
     }
 
-    public void addProject(String title, String description, Project parent) {
+    public void addProject(String title, String description, Project parent, Calendar dueDate) {
         errorModel.clear();
         if (verifyUniqueTitle(title, AbstractProjectTask.ProjectOrTask.PROJECT)) return;
         Validation<Project> projectValidation = Project.create(title, description,
-                parent == null ? rootProject : parent);
+                parent == null ? rootProject : parent, dueDate);
         if(projectValidation.isPresent()) {
             final Project project = projectValidation.getObject();
             projects.put(project.getTitle(), project);
@@ -72,10 +72,10 @@ public class Model {
         }
     }
 
-    public void addTask(String title, String description, Project parent) {
+    public void addTask(String title, String description, Project parent, Calendar dueDate) {
         errorModel.clear();
         if(verifyUniqueTitle(title, AbstractProjectTask.ProjectOrTask.TASK)) return;
-        Validation<Task> taskValidation = Task.create(title, description, parent);
+        Validation<Task> taskValidation = Task.create(title, description, parent, dueDate);
         if(taskValidation.isPresent()) {
             final Task task = taskValidation.getObject();
             tasks.put(task.getTitle(), task);

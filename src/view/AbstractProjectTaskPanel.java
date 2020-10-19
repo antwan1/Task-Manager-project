@@ -108,20 +108,24 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
     abstract void treeSelectionChanged(TreeNode treeNode);
 
     private void addProjectTask(ActionEvent e) {
+        Calendar dueDate = dueDateModel.getValue();
         String title = titleEntry.getText();
         String description = descriptionEntry.getText();
         Project parent = (Project) parentEntry.getSelectedItem();
-        addProjectTask(title, description, parent);
+        addProjectTask(title, description, parent, dueDate);
     }
 
-    protected abstract void addProjectTask(String title, String description, Project parent);
+    protected abstract void addProjectTask
+            (String title, String description, Project parent, Calendar dueDate);
 
     private void modifyProjectTask(ActionEvent actionEvent) {
+        Calendar dueDate = dueDateModel.getValue();
         String title = titleEntry.getText();
         String description = descriptionEntry.getText();
         Project parent = (Project) parentEntry.getSelectedItem();
-        modifyProjectTask(title, description, parent);
+        modifyProjectTask(title, description, parent, dueDate);
     }
 
-    protected abstract void modifyProjectTask(String title, String description, Project parent);
+    protected abstract void modifyProjectTask
+            (String title, String description, Project parent, Calendar dueDate);
 }

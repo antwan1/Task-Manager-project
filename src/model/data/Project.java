@@ -17,12 +17,12 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
 
     private final HashMap<String, AbstractProjectTask> children = new HashMap<>();
 
-    private Project(String title, String description, Project parent) {
-        super(title, description, parent);
+    private Project(String title, String description, Project parent, Calendar dueDate) {
+        super(title, description, parent, dueDate);
     }
 
-    public Project(String title, String description) {
-        super(title, description, null);
+    public Project(String title, String description, Calendar dueDate) {
+        super(title, description, null, dueDate);
     }
 
     void add(AbstractProjectTask project) {
@@ -41,7 +41,11 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
 
     @Override
     public String toString() {
-        return ("ROOT".equals(getTitle()) ? "" : getTitle() + ": ") + getDescription();
+        String temp = getDueDate().getTime().toString();
+        return ("ROOT".equals(getTitle()) ? "" : getTitle() + ": ") + getDescription() +
+                (getDueDate().compareTo(Calendar.getInstance()) < 1
+                        ? "" : " (Due on " + temp.substring(4, 10) +
+                        temp.substring(temp.lastIndexOf(" ")) +")");
     }
 
     @Override
@@ -75,21 +79,22 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
         return Collections.enumeration(children.values());
     }
 
-    public static Validation<Project> create(String title, String description){
-        Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT);
+    public static Validation<Project> create(String title, String description, Calendar dueDate){
+        Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT, dueDate);
         if(errorMessage.size() != 0) {
             return new Validation<>(errorMessage);
         }
-        return new Validation<>(new Project(title, description));
+        return new Validation<>(new Project(title, description, dueDate));
     }
 
-    public static Validation<Project> create(String title, String description, Project parent) {
-        Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT);
+    public static Validation<Project> create
+            (String title, String description, Project parent, Calendar dueDate) {
+        Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT, dueDate);
         errorMessage.add(parent == null ? "No parent project provided" : null);
         if (errorMessage.size() != 0) {
             return new Validation<>(errorMessage);
         }
-        return new Validation<>(new Project(title, description, parent));
+        return new Validation<>(new Project(title, description, parent, dueDate));
     }
 
 }

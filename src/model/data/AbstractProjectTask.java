@@ -1,12 +1,10 @@
 package model.data;
 
-import jdk.dynalink.CallSiteDescriptor;
 import model.utility.Errors;
 import model.utility.Validation;
 
 import javax.swing.tree.TreeNode;
 import java.util.Calendar;
-import java.util.spi.CalendarDataProvider;
 
 /**
  * @author manmohansingh
@@ -19,6 +17,7 @@ public abstract class AbstractProjectTask implements TreeNode {
     protected final String title;
     protected final String description;
     protected final Project parent;
+    protected final Calendar dueDate;
 
     public enum ProjectOrTask {
         PROJECT ("Project"), TASK("Task");
@@ -33,10 +32,11 @@ public abstract class AbstractProjectTask implements TreeNode {
         }
     }
 
-    public AbstractProjectTask(String title, String description, Project parentProject) {
+    public AbstractProjectTask(String title, String description, Project parentProject, Calendar dueDate) {
         this.title = title.trim();
         this.description = description.trim();
         this.parent = parentProject;
+        this.dueDate = dueDate;
         if(parent != null) {
             parent.add(this);
         }
@@ -50,19 +50,19 @@ public abstract class AbstractProjectTask implements TreeNode {
         return description;
     }
 
-    public Project getParent() {
-        return parent;
-    }
+    public Project getParent() { return parent; }
 
-    static Errors verifyTitleAndDescription(String title, String description, ProjectOrTask projectOrTask) {
+    public Calendar getDueDate() { return dueDate; }
+
+    static Errors verifyTitleAndDescription
+            (String title, String description, ProjectOrTask projectOrTask, Calendar dueDate) {
         Errors errors = Errors.create(Validation.isPresent(title, "No " +
                 projectOrTask.getTitle() + " name provided."));
         errors.add(Validation.isPresent(description, "No " + projectOrTask.name().toLowerCase()
                 + " description provided."));
-//        errors.add(Validation.isPresent(date, "No " + projectOrTask.name().toLowerCase()
-//                + " creation Date provided."));
-//        errors.add(Validation.isPresent(dueDate, "No " + projectOrTask.name().toLowerCase()
-//                + " due Date Provided."));
+        if(dueDate == null) {
+            errors.add("Due Date entered is invalid.");
+        }
         return errors;
     }
 

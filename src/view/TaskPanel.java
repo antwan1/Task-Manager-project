@@ -44,11 +44,11 @@ public class TaskPanel extends AbstractProjectTaskPanel{
     }
 
     @Override
-    protected void addProjectTask(String title, String description, Project parent) {
-        model.addTask(title, description, parent);
+    protected void addProjectTask(String title, String description, Project parent, Calendar dueDate) {
+        model.addTask(title, description, parent, dueDate);
     }
 
     @Override
-    protected void modifyProjectTask(String title, String description, Project parent) {
+    protected void modifyProjectTask(String title, String description, Project parent, Calendar dueDate) {
     }
 }
