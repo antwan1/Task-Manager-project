@@ -72,6 +72,13 @@ designed and developed by Errol Thompson.
 @manmohansingh -
     Majority of the Data Model still lacks comments which would be added
     later upon the course of this assignment.
+    
+[12] 19-10-2020 11:17
+@manmohansingh -
+    Made "due Date" visible alongside Project and Title name.
+    Need to display the importance band alongside the text as well.
+    Need to put in error handling for, if the user enters due date which comes
+    before today's (present day's) date.
  
 
 
