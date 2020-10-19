@@ -27,6 +27,7 @@ public class ProjectTreePanel extends JPanel{
     private final JTree projectTree;
     private final JButton findButton;
     private final JButton deleteButton;
+    private final JButton completeButton;
 
     /**
      * Constructor to create a panel to display projects and tasks in tree format.
@@ -72,6 +73,12 @@ public class ProjectTreePanel extends JPanel{
         deleteButton.setBounds((width / 2) + 35, height - 25, 60, 20);
         this.add(deleteButton);
         deleteButton.addActionListener(new Action());
+
+        completeButton = new JButton("Complete");
+        completeButton.setBounds((width / 2) - 100, height - 25, 60,20);
+        this.add(completeButton);
+        completeButton.addActionListener(new Action());
+
     }
 
     private void treeSelection(TreeSelectionEvent treeSelectionEvent) {
@@ -106,6 +113,8 @@ public class ProjectTreePanel extends JPanel{
 //          backButton.setSize(40,20);
 //          backButton.add(backButton);
 //          backButton.addActionListener();
+
+
 
         }
     }

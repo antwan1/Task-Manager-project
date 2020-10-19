@@ -29,6 +29,7 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
     protected final JButton modifyButton;
     private final UtilCalendarModel dueDateModel;
 
+
     /**
      * Constructor used to add necessary text and components to the panels on left hand side
      * of the frame, used to accept model.model.model.data from the user
@@ -101,6 +102,8 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
         modifyButton.setVisible(false);
         modifyButton.addActionListener(this::modifyProjectTask);
         this.add(modifyButton);
+
+
 
         model.addSelectionListener(this::treeSelectionChanged);
     }
