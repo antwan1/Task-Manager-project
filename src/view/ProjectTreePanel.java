@@ -7,7 +7,6 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.tree.TreeNode;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import static javax.swing.tree.TreeSelectionModel.SINGLE_TREE_SELECTION;
 
@@ -27,7 +26,7 @@ public class ProjectTreePanel extends JPanel{
     private final JTree projectTree;
     private final JButton findButton;
     private final JButton deleteButton;
-    private final JButton completeButton;
+    private TreeNode selectedItem;
 
     /**
      * Constructor to create a panel to display projects and tasks in tree format.
@@ -71,52 +70,36 @@ public class ProjectTreePanel extends JPanel{
 
         deleteButton = new JButton("Delete");
         deleteButton.setBounds((width / 2) + 35, height - 25, 60, 20);
+        deleteButton.setEnabled(false);
+        deleteButton.addActionListener(this::deleteSelectedItem);
         this.add(deleteButton);
-        deleteButton.addActionListener(new Action());
-
-        completeButton = new JButton("Complete");
-        completeButton.setBounds((width / 2) - 100, height - 25, 60,20);
-        this.add(completeButton);
-        completeButton.addActionListener(new Action());
-
     }
 
     private void treeSelection(TreeSelectionEvent treeSelectionEvent) {
-        TreeNode selectedItem = (TreeNode) projectTree.getLastSelectedPathComponent();
+        selectedItem = (TreeNode) projectTree.getLastSelectedPathComponent();
         modifyButton.setEnabled(selectedItem != null);
-        model.setSelection(selectedItem);
+        deleteButton.setEnabled(selectedItem != null);
     }
 
     /**
      * @author haresh
-     * This class will allow the user to press the delete button and
+     * This function will allow the user to press the delete button and
      * a pop-up message to come in a new panel to corroborate with the
      * user whether they want to delete the chosen file or go back to
      * the main frame.
      */
-    static class Action implements ActionListener {
 
-        public void actionPerformed (ActionEvent e){
+    private void deleteSelectedItem(ActionEvent actionEvent) {
 
-            JFrame deleteFrame = new JFrame("Delete");
-            deleteFrame.setVisible(true);
-            deleteFrame.setSize(400,200);
-            JLabel prompt = new JLabel("Are you sure you want to delete this?");
-            JPanel deletePanel = new JPanel();
-            deleteFrame.add(deletePanel);
-            deletePanel.add(prompt);
-
-//          JButton backButton = new JButton("Back");
-//          backButton.setBounds(50, 22, 60, 20);
-//          backButton.setEnabled(true);
-//          backButton.setVisible(true);
-//          backButton.setSize(40,20);
-//          backButton.add(backButton);
-//          backButton.addActionListener();
-
-
-
-        }
+//        JFrame deleteFrame = new JFrame("Delete");
+//        deleteFrame.setVisible(true);
+//        deleteFrame.setSize(400, 200);
+//        JLabel prompt = new JLabel("Are you sure you want to delete this?");
+//        JPanel deletePanel = new JPanel();
+//        deleteFrame.add(deletePanel);
+//        deletePanel.add(prompt);
+        model.setSelection(selectedItem);
+        model.deleteTreeEntry();
     }
 
     @Override

@@ -15,6 +15,7 @@ import java.util.Calendar;
 public class ProjectPanel extends AbstractProjectTaskPanel{
     public static final int MIN_WIDTH = 450;
     public static final int MIN_HEIGHT = 105;
+    private Project treeNode;
 
     public ProjectPanel(String title, Model model, int width, int height, Color colour) {
         super(title, model, Math.max(MIN_WIDTH, width), Math.max(MIN_HEIGHT, height), colour);
@@ -33,6 +34,10 @@ public class ProjectPanel extends AbstractProjectTaskPanel{
             addButton.setVisible(false);
             modifyButton.setEnabled(true);
             modifyButton.setVisible(true);
+            Project project = (Project) treeNode;
+            titleEntry.setText(project.getTitle());
+            descriptionEntry.setText(project.getDescription());
+            dueDateModel.setValue(project.getDueDate());
             System.out.println(treeNode);
         }
     }
@@ -44,7 +49,7 @@ public class ProjectPanel extends AbstractProjectTaskPanel{
 
     @Override
     protected void modifyProjectTask(String title, String description, Project parent, Calendar dueDate) {
-
+        model.modifyProject(title, description, parent, dueDate);
     }
 
 }

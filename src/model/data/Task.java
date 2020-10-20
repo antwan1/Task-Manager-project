@@ -35,6 +35,11 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
     }
 
     @Override
+    public boolean deleteChild(TreeNode selectedItem) {
+        return false;
+    }
+
+    @Override
     public TreeNode getChildAt(int childIndex) {
         return null;
     }

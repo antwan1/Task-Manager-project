@@ -61,6 +61,11 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
     }
 
     @Override
+    public boolean deleteChild(TreeNode selectedItem) {
+        return false;
+    }
+
+    @Override
     public boolean isLeaf() {
         return children.isEmpty();
     }
