@@ -4,6 +4,8 @@ import model.utility.Errors;
 import model.utility.Validation;
 
 import javax.swing.tree.TreeNode;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Enumeration;
 
@@ -71,4 +73,20 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
         }
         return new Validation<>(new Task(title, description, project, dueDate));
     }
+    private void TasksFile{
+
+        try{
+            FileWriter TaskFile = new FileWriter("Tasks.txt");
+            TaskFile.write(title);
+            TaskFile.write(description);
+            TaskFile.close();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
 }
+
