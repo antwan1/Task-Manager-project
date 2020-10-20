@@ -120,5 +120,13 @@ public class Model {
         selectionListeners.add(listener);
     }
 
+    public boolean deleteTreeEntry() {
+        AbstractProjectTask parent = (AbstractProjectTask) selectedItem.getParent();
+        final boolean accepted = parent.deleteChild(selectedItem);
+        projectTree.fireTreeNodeAdded(parent);
+        return accepted;
+    }
 
+    public void modifyProject(String title, String description, Project parent, Calendar dueDate) {
+    }
 }

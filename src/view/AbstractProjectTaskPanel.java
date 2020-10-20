@@ -22,12 +22,12 @@ import net.sourceforge.jdatepicker.impl.UtilCalendarModel;
 public abstract class AbstractProjectTaskPanel extends JPanel {
     protected final Model model;
     static final int FIELD_START = 100;
-    private final JTextField titleEntry;
-    private final JTextField descriptionEntry;
+    protected final JTextField titleEntry;
+    protected final JTextField descriptionEntry;
     protected final JButton addButton;
     private final JComboBox<Project> parentEntry;
     protected final JButton modifyButton;
-    private final UtilCalendarModel dueDateModel;
+    public final UtilCalendarModel dueDateModel;
 
     /**
      * Constructor used to add necessary text and components to the panels on left hand side

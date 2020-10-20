@@ -71,4 +71,6 @@ public abstract class AbstractProjectTask implements TreeNode {
         return true;
     }
 
+    public abstract boolean deleteChild(TreeNode selectedItem);
+
 }
