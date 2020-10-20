@@ -73,7 +73,8 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
         }
         return new Validation<>(new Task(title, description, project, dueDate));
     }
-    private void TasksFile{
+
+    {
 
         try{
             FileWriter TaskFile = new FileWriter("Tasks.txt");
