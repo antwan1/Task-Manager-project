@@ -85,4 +85,9 @@ designed and developed by Errol Thompson.
     Added dataListeners to delete and working on dataListeners for 
     Modify button.
 
+[14] 21-10-2020 16:33
+@manmohansingh -
+    Successfully Added Error handling to check for due Date being higher than
+    the parent's due date (if provided) and displaying the applicable error.
+
 
