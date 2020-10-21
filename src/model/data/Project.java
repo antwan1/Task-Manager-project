@@ -47,7 +47,7 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
         return ("ROOT".equals(getTitle()) ? "" : getTitle() + ": ") + getDescription() +
                 (getDueDate().compareTo(Calendar.getInstance()) < 1
                         ? "" : " (Due on " + temp.substring(4, 10) +
-                        temp.substring(temp.lastIndexOf(" ")) +")");
+                        temp.substring(temp.lastIndexOf(" ")) + ")");
     }
 
     @Override
@@ -74,7 +74,7 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
     public int getIndex(TreeNode node) {
         Object[] projectArray = children.values().toArray();
         for (int i = 0; i < children.size(); i++) {
-            if(node == projectArray[i]) {
+            if (node == projectArray[i]) {
                 return i;
             }
         }
@@ -86,9 +86,9 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
         return Collections.enumeration(children.values());
     }
 
-    public static Validation<Project> create(String title, String description, Calendar dueDate){
+    public static Validation<Project> create(String title, String description, Calendar dueDate) {
         Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT, dueDate);
-        if(errorMessage.size() != 0) {
+        if (errorMessage.size() != 0) {
             return new Validation<>(errorMessage);
         }
         return new Validation<>(new Project(title, description, dueDate));
@@ -102,6 +102,19 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
             return new Validation<>(errorMessage);
         }
         return new Validation<>(new Project(title, description, parent, dueDate));
+    }
+    {
+
+        try{
+            FileWriter ProjectFile = new FileWriter("Project.txt");
+            ProjectFile.write(title);
+            ProjectFile.write(description);
+            ProjectFile.close();
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
 
 
