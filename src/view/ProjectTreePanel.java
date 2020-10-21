@@ -13,6 +13,16 @@ import static javax.swing.tree.TreeSelectionModel.SINGLE_TREE_SELECTION;
 /**
  * @author manmohansingh
  * @version 13/10/2020 10:56
+ *
+ * ********************************************************************
+ * Title: TemperatureRecording
+ * Author: Thompson, E (@thompel1)
+ * Date: 2020
+ * Code Version: N/A
+ * Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
+ * ********************************************************************
+ * [Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ *
  */
 
 public class ProjectTreePanel extends JPanel{

@@ -12,7 +12,15 @@ import javax.swing.tree.TreeNode;
  * @author manmohansingh
  * 17/10/2020 12:28
  *
- * [1] (Thompson, 2020)
+ * ********************************************************************
+ * Title: TemperatureRecording
+ * Author: Thompson, E (@thompel1)
+ * Date: 2020
+ * Code Version: N/A
+ * Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
+ * ********************************************************************
+ * [Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ *
  */
 
 public class Project extends AbstractProjectTask implements Comparable<Project> {

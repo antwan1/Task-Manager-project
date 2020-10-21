@@ -6,6 +6,21 @@ import java.awt.*;
 import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED;
 import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
 
+/**
+ * @author manmohansingh
+ * @version 18/10/2020 15:03
+ *
+ * ********************************************************************
+ * Title: TemperatureRecording
+ * Author: Thompson, E (@thompel1)
+ * Date: 2020
+ * Code Version: N/A
+ * Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
+ * ********************************************************************
+ * [Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ *
+ */
+
 public class ErrorPanel extends JPanel{
     public static final int MIN_WIDTH = 100;
     public static final int MIN_HEIGHT = 100;

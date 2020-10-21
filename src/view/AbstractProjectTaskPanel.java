@@ -17,6 +17,16 @@ import net.sourceforge.jdatepicker.impl.UtilCalendarModel;
 /**
  * @author manmohansingh
  * @version 11/10/2020 12:26
+ *
+ * ********************************************************************
+ * Title: TemperatureRecording
+ * Author: Thompson, E (@thompel1)
+ * Date: 2020
+ * Code Version: N/A
+ * Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
+ * ********************************************************************
+ * [Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ *
  */
 
 public abstract class AbstractProjectTaskPanel extends JPanel {
@@ -39,7 +49,6 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
      * @param height assigning the pre-defined height to the panel
      * @param colour assigning the colour to the text associated with the panel
      *
-     * [1] (Thompson, 2020)
      */
 
     public AbstractProjectTaskPanel(String title, Model model, int width, int height, Color colour) {
@@ -108,6 +117,12 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
 
     abstract void treeSelectionChanged(TreeNode treeNode);
 
+    /**
+     * function called inside the project or task panel classes to add the entered details
+     * for project or task by initiating a data listener.
+     *
+     * @param e is the action event when the listener is called i.e., when add button is pressed
+     */
     private void addProjectTask(ActionEvent e) {
         Calendar dueDate = dueDateModel.getValue();
         String title = titleEntry.getText();
@@ -119,6 +134,13 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
     protected abstract void addProjectTask
             (String title, String description, Project parent, Calendar dueDate);
 
+    /**
+     * function called inside the project or task panel classes to modify the entered details
+     * for project or task by initiating a data listener.
+     *
+     * @param actionEvent is the action event when the listener is called i.e, when modify button
+     *                    is pressed.
+     */
     private void modifyProjectTask(ActionEvent actionEvent) {
         Calendar dueDate = dueDateModel.getValue();
         String title = titleEntry.getText();

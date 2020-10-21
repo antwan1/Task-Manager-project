@@ -10,6 +10,16 @@ import java.util.Calendar;
 /**
  * @author manmohansingh
  * @version 11/10/2020 12:23
+ *
+ * ********************************************************************
+ * Title: TemperatureRecording
+ * Author: Thompson, E (@thompel1)
+ * Date: 2020
+ * Code Version: N/A
+ * Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
+ * ********************************************************************
+ * [Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ *
  */
 
 public class ProjectPanel extends AbstractProjectTaskPanel{
