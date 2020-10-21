@@ -32,7 +32,7 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
 
     /**
      * Constructor used to add necessary text and components to the panels on left hand side
-     * of the frame, used to accept model.model.model.data from the user
+     * of the frame, used to accept model.data from the user
      *
      * @param title adding titles to the panel
      * @param width assigning the pre-defined width to the panel
@@ -102,9 +102,7 @@ public abstract class AbstractProjectTaskPanel extends JPanel {
         modifyButton.setVisible(false);
         modifyButton.addActionListener(this::modifyProjectTask);
         this.add(modifyButton);
-
-
-
+        
         model.addSelectionListener(this::treeSelectionChanged);
     }
 

@@ -8,18 +8,11 @@ import java.awt.*;
 import java.util.Calendar;
 
 public class SubTaskPanel extends AbstractProjectTaskPanel {
-    /**
-     * Constructor used to add necessary text and components to the panels on left hand side
-     * of the frame, used to accept model.model.model.data from the user
-     *
-     * @param title  adding titles to the panel
-     * @param model
-     * @param width  assigning the pre-defined width to the panel
-     * @param height assigning the pre-defined height to the panel
-     * @param colour assigning the colour to the text associated with the panel
-     */
+    public static final int MIN_WIDTH = 450;
+    public static final int MIN_HEIGHT = 125;
+    
     public SubTaskPanel(String title, Model model, int width, int height, Color colour) {
-        super(title, model, width, height, colour);
+        super(title, model, Math.max(MIN_WIDTH, width), Math.max(MIN_HEIGHT, height), colour);
     }
 
     @Override
