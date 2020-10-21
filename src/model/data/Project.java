@@ -1,5 +1,6 @@
 package model.data;
 
+import jdk.jfr.Description;
 import model.utility.Errors;
 import model.utility.Validation;
 
@@ -106,6 +107,9 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
             (String title, String description, Project parent, Calendar dueDate) {
         Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT, dueDate);
         errorMessage.add(parent == null ? "No parent project provided" : null);
+        if((parent.getDueDate()).compareTo(dueDate) < 1 &&
+                ((parent.getDueDate()).compareTo(Calendar.getInstance()) == 1)){
+            errorMessage.add("Due date cannot be higher than Parent Project."); }
         if (errorMessage.size() != 0) {
             return new Validation<>(errorMessage);
         }

@@ -93,7 +93,8 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
     public String toString() {
         String temp = getDueDate().getTime().toString();
         return "Task - " + String.format(getTitle() + ": " + getDescription() +
-                " (Due on " + temp.substring(4, 10) + temp.substring(temp.lastIndexOf(" ")) + ")");
+                (getDueDate().compareTo(Calendar.getInstance()) < 1 ? "" :
+                " (Due on " + temp.substring(4, 10) + temp.substring(temp.lastIndexOf(" ")) + ")"));
     }
 
     /**
@@ -178,6 +179,8 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
             (String title, String description, Project project, Calendar dueDate) {
         Errors errorMessages = verifyTitleAndDescription(title, description, ProjectOrTask.TASK, dueDate);
         errorMessages.add(project == null ? "No project is provided" : null);
+        if((project.getDueDate()).compareTo(dueDate) < 1)
+            errorMessages.add("Task's Due date cannot be higher than parent's due date.");
         if(errorMessages.size() != 0) {
             return new Validation<>(errorMessages);
         }

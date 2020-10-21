@@ -113,6 +113,9 @@ public abstract class AbstractProjectTask implements TreeNode {
         if(dueDate == null) {
             errors.add("Due Date entered is invalid.");
         }
+        if(title != "ROOT" && dueDate.compareTo(Calendar.getInstance()) < 1) {
+            errors.add("Due Date must be higher than Today's Date");
+        }
         return errors;
     }
 

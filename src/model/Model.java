@@ -33,7 +33,7 @@ import java.util.Vector;
 public class Model {
 
     /* The project tree. The root node is not visible to the user other than in combo boxes for
-   selecting a region. */
+   selecting a project. */
     private final Project rootProject =
             Project.create("ROOT", "Select a project", Calendar.getInstance()).getObject();
     /* This is the model required to make the JTree work */
