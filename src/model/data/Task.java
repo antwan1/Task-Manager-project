@@ -6,6 +6,7 @@ import model.utility.Validation;
 import javax.swing.tree.TreeNode;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Enumeration;
 
@@ -29,14 +30,14 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
     /**
      * private constructor used to initialise a Task object, it is marked private in order to
      * validate entered data before adding it to the tree.
-     *
-     * @param title is a unique title for the Task
+     *  @param title is a unique title for the Task
      * @param description is the description to the specific task.
      * @param project is the parent to the unique task
      * @param dueDate is the date on which that specific task is due
+     * @param importance
      */
-    private Task(String title, String description, Project project, Calendar dueDate) {
-        super(title, description, project, dueDate);
+    private Task(String title, String description, Project project, Calendar dueDate, int importance) {
+        super(title, description, project, dueDate, importance);
     }
 
     /**
@@ -91,10 +92,8 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
      */
     @Override
     public String toString() {
-        String temp = getDueDate().getTime().toString();
-        return "Task - " + String.format(getTitle() + ": " + getDescription() +
-                (getDueDate().compareTo(Calendar.getInstance()) < 1 ? "" :
-                " (Due on " + temp.substring(4, 10) + temp.substring(temp.lastIndexOf(" ")) + ")"));
+        return "Task - " + getTitle() + ": " + getDescription() + " (Due on " +
+                        DateFormat.getDateInstance(DateFormat.MEDIUM).format(dueDate.getTime()) + ")";
     }
 
     /**
@@ -176,15 +175,19 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
      * @return
      */
     public static Validation<Task> create
-            (String title, String description, Project project, Calendar dueDate) {
+            (String title, String description, Project project, Calendar dueDate, int importance) {
+
         Errors errorMessages = verifyTitleAndDescription(title, description, ProjectOrTask.TASK, dueDate);
+        if(importance < 0 || importance > 99)
+            errorMessages.add("Importance Value out of Bounds! Should be between 0 and 99");
         errorMessages.add(project == null ? "No project is provided" : null);
-        if((project.getDueDate()).compareTo(dueDate) < 1)
+        if((project.getDueDate()).compareTo(dueDate) < 1 &&
+                ((project.getDueDate()).compareTo(Calendar.getInstance()) == 1))
             errorMessages.add("Task's Due date cannot be higher than parent's due date.");
         if(errorMessages.size() != 0) {
             return new Validation<>(errorMessages);
         }
-        return new Validation<>(new Task(title, description, project, dueDate));
+        return new Validation<>(new Task(title, description, project, dueDate, importance));
     }
 
 //    private void TasksFile{

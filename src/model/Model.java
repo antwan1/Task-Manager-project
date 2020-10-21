@@ -128,10 +128,10 @@ public class Model {
      * @param parent project of the task
      * @param dueDate on which the task is due
      */
-    public void addTask(String title, String description, Project parent, Calendar dueDate) {
+    public void addTask(String title, String description, Project parent, Calendar dueDate, int importance) {
         errorModel.clear();
         if(verifyUniqueTitle(title, AbstractProjectTask.ProjectOrTask.TASK)) return;
-        Validation<Task> taskValidation = Task.create(title, description, parent, dueDate);
+        Validation<Task> taskValidation = Task.create(title, description, parent, dueDate, importance);
         if(taskValidation.isPresent()) {
             final Task task = taskValidation.getObject();
             tasks.put(task.getTitle(), task);

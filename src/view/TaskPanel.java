@@ -55,7 +55,7 @@ public class TaskPanel extends AbstractProjectTaskPanel{
 
     @Override
     protected void addProjectTask(String title, String description, Project parent, Calendar dueDate) {
-        model.addTask(title, description, parent, dueDate);
+        model.addTask(title, description, parent, dueDate, (Integer) importanceSelect.getValue());
     }
 
     @Override

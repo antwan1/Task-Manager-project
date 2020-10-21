@@ -1,6 +1,6 @@
 package model.utility;
 
-import java.util.Calendar;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -52,7 +52,7 @@ public class Validation<T> {
      *
      * @return empty errorMessage string if no errors found, otherwise error message(s) are returned.
      */
-    public Errors getErrorMessage() {
+    public Collection<? extends String> getErrorMessage() {
         return errorMessage;
     }
 

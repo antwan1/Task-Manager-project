@@ -26,6 +26,7 @@ public abstract class AbstractProjectTask implements TreeNode {
     protected final String description;
     protected final Project parent;
     protected final Calendar dueDate;
+    private int importance;
 
     /**
      * Special "enum" class representing constants for Project and Task used to indicate which Branch/Node the
@@ -63,6 +64,17 @@ public abstract class AbstractProjectTask implements TreeNode {
         }
     }
 
+    public AbstractProjectTask(String title, String description, Project parentProject, Calendar dueDate, int importance) {
+        this.title = title.trim();
+        this.description = description.trim();
+        this.parent = parentProject;
+        this.dueDate = dueDate;
+        this.importance = importance;
+        if(parent != null) {
+            parent.add(this);
+        }
+    }
+
     /**
      * to extract the title for project or sub-project or task
      *
@@ -94,6 +106,8 @@ public abstract class AbstractProjectTask implements TreeNode {
      * @return the project's / sub-project's / task's due date
      */
     public Calendar getDueDate() { return dueDate; }
+
+    public int getImportance() { return importance; }
 
     /**
      * this method verifies whether the user has entered title, description and due date in the fields

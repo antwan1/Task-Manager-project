@@ -3,8 +3,17 @@
 This project is highly inspired from the Temperature recording application
 designed and developed by Errol Thompson.
 
+
 # References
-(Thompson, 2020) TemperatureRecord files gitlab
+********************************************************************
+Title: TemperatureRecording
+Author: Thompson, E (@thompel1)
+Date: 2015
+Code Version: N/A
+Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
+********************************************************************
+[Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ 
 
 # Logs
 [1] 11-10-2020 13:20

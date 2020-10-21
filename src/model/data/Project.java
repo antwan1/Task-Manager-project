@@ -6,6 +6,7 @@ import model.utility.Validation;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.*;
 import javax.swing.tree.TreeNode;
 
@@ -52,11 +53,10 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
 
     @Override
     public String toString() {
-        String temp = getDueDate().getTime().toString();
         return ("ROOT".equals(getTitle()) ? "" : getTitle() + ": ") + getDescription() +
                 (getDueDate().compareTo(Calendar.getInstance()) < 1
-                        ? "" : " (Due on " + temp.substring(4, 10) +
-                        temp.substring(temp.lastIndexOf(" ")) + ")");
+                        ? "" :  " (Due on " +
+                        DateFormat.getDateInstance(DateFormat.MEDIUM).format(dueDate.getTime()) + ")");
     }
 
     @Override
