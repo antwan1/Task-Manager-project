@@ -99,4 +99,9 @@ Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
     Successfully Added Error handling to check for due Date being higher than
     the parent's due date (if provided) and displaying the applicable error.
 
+[15] 21-10-2020 18:07
+@manmohansingh -
+    Integrated importance inside the data model for Task, still lacking the core features
+    such as sorting of Tasks according to urgency.
+
 
