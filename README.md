@@ -80,5 +80,9 @@ designed and developed by Errol Thompson.
     Need to put in error handling for, if the user enters due date which comes
     before today's (present day's) date.
  
+[13] 20-10-2020 10:21
+@manmohansingh -
+    Added dataListeners to delete and working on dataListeners for 
+    Modify button.
 
 
