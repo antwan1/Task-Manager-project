@@ -13,6 +13,8 @@ import java.util.Calendar;
  * @author manmohansingh
  * @version 13/10/2020 20:17
  *
+ * (Thompson, 2020)
+ *
  * ********************************************************************
  * Title: TemperatureRecording
  * Author: Thompson, E (@thompel1)

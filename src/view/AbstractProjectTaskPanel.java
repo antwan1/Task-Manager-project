@@ -18,6 +18,8 @@ import net.sourceforge.jdatepicker.impl.UtilCalendarModel;
  * @author manmohansingh
  * @version 11/10/2020 12:26
  *
+ * (Thompson, 2020)
+ *
  * ********************************************************************
  * Title: TemperatureRecording
  * Author: Thompson, E (@thompel1)

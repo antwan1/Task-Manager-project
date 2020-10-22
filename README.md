@@ -21,6 +21,10 @@ project's or sub-project's due date and so on.
 designed and developed by Errol Thompson.]
 
 # References
+
+[1] Thompson, E., 2020. Temperaturerecording. [online] gitlab.com. Available at: <https://gitlab.com/FoOOSD/temperaturerecording.git> 
+[Accessed 11 - 21 October 2020].
+
 ********************************************************************
 Title: TemperatureRecording
 Author: Thompson, E (@thompel1)

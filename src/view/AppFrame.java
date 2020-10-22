@@ -15,6 +15,8 @@ import java.util.Date;
  * @author manmohansingh
  * @version 11/10/2020 10:53
  *
+ * (Thompson, 2020)
+ *
  * ********************************************************************
  * Title: TemperatureRecording
  * Author: Thompson, E (@thompel1)

@@ -14,6 +14,8 @@ import java.util.Enumeration;
  * @author manmohansingh
  * 17/10/2020 13:15
  *
+ * (Thompson, 2020)
+ *
  * ********************************************************************
  * Title: TemperatureRecording
  * Author: Thompson, E (@thompel1)

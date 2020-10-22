@@ -4,12 +4,10 @@ import java.util.Collection;
 import java.util.Optional;
 
 /**
- * This class is designed to handle the results of data validation after error handling such that
- * when the data is not valid, no object is returned; instead applicable error message is returned.
- * And if the object is valid applicable object is returned.
+ *  @author manmohansingh
+ *  17/10/2020 14:00
  *
- * @author manmohansingh
- * 17/10/2020 14:00
+ * (Thompson, 2020)
  *
  * ********************************************************************
  * Title: TemperatureRecording
@@ -19,6 +17,11 @@ import java.util.Optional;
  * Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
  * ********************************************************************
  * [Source Code] https://gitlab.com/FoOOSD/temperaturerecording.git
+ *
+ * This class is designed to handle the results of data validation after error handling such that
+ * when the data is not valid, no object is returned; instead applicable error message is returned.
+ * And if the object is valid applicable object is returned.
+ *
  *
  */
 

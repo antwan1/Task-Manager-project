@@ -10,6 +10,8 @@ import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED;
  * @author manmohansingh
  * @version 18/10/2020 15:03
  *
+ * (Thompson, 2020)
+ *
  * ********************************************************************
  * Title: TemperatureRecording
  * Author: Thompson, E (@thompel1)

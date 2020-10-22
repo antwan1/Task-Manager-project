@@ -14,6 +14,8 @@ import java.util.Vector;
  * @author manmohansingh
  * 17/10/2020 11:00
  *
+ * (Thompson, 2020)
+ *
  * ********************************************************************
  * Title: TemperatureRecording
  * Author: Thompson, E (@thompel1)
