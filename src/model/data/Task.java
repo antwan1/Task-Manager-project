@@ -186,6 +186,8 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
         if((project.getDueDate()).compareTo(dueDate) < 1 &&
                 ((project.getDueDate()).compareTo(Calendar.getInstance()) == 1))
             errorMessages.add("Task's Due date cannot be higher than parent's due date.");
+        if(dueDate.compareTo(Calendar.getInstance()) < 1)
+            errorMessages.add("Due Date cannot be less than Today's Date.");
         if(errorMessages.size() != 0) {
             return new Validation<>(errorMessages);
         }

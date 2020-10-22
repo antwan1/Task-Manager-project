@@ -43,6 +43,11 @@ public class TaskPanel extends AbstractProjectTaskPanel{
         importanceSelect.setBounds(FIELD_START, 98, 80, 20);
         importanceSelect.setFocusable(true);
         this.add(importanceSelect);
+
+        JLabel imp_instruct = new JLabel("(0 = Low, 99 = High)");
+        imp_instruct.setBounds(190, 102, 140, 15);
+        imp_instruct.setFocusable(false);
+        this.add(imp_instruct);
     }
 
     @Override

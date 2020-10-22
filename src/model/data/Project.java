@@ -109,10 +109,14 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
             (String title, String description, Project parent, Calendar dueDate) {
         Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT, dueDate);
         errorMessage.add(parent == null ? "No parent project provided" : null);
+        if(dueDate.equals(""))
+            errorMessage.add("No due Date entered.");
         if ((parent.getDueDate()).compareTo(dueDate) < 1 &&
                 ((parent.getDueDate()).compareTo(Calendar.getInstance()) == 1)) {
             errorMessage.add("Due date cannot be higher than Parent Project.");
         }
+        if(dueDate.compareTo(Calendar.getInstance()) < 1)
+            errorMessage.add("Due Date cannot be less than Today's Date.");
         if (errorMessage.size() != 0) {
             return new Validation<>(errorMessage);
         }

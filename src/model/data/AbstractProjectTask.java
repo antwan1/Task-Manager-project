@@ -62,7 +62,7 @@ public abstract class AbstractProjectTask implements TreeNode {
                 projectOrTask.getTitle() + " name provided."));
         errors.add(Validation.isPresent(description, "No " + projectOrTask.name().toLowerCase()
                 + " description provided."));
-        if(dueDate == null) {
+        if(dueDate.equals(null)) {
             errors.add("Due Date entered is invalid.");
         }
         return errors;
