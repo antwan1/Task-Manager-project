@@ -39,7 +39,7 @@ public class Task extends AbstractProjectTask implements Comparable<Task>{
      * @param importance
      */
     private Task(String title, String description, Project project, Calendar dueDate, int importance) {
-        super(title, description, project, dueDate, importance);
+        super(title, description, project, dueDate);
     }
 
     /**
