@@ -85,7 +85,7 @@ Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
     delete and find the existing data, since the data entered
     into the fields upon running the application is not being
     written into any external file.
-    The UI still lack fields in order assign date to the tasks
+    The UI still lack fields in order assign model.date to the tasks
     and projects; as well as the importance band.
     The application is unable to calculate urgency of any task by
     making mathematical comparisons with the other tasks or 
@@ -106,8 +106,8 @@ Availability: https://gitlab.com/FoOOSD/temperaturerecording.git
 @manmohansingh -
     Made "due Date" visible alongside Project and Title name.
     Need to display the importance band alongside the text as well.
-    Need to put in error handling for, if the user enters due date which comes
-    before today's (present day's) date.
+    Need to put in error handling for, if the user enters due model.date which comes
+    before today's (present day's) model.date.
  
 [13] 20-10-2020 10:21
 @manmohansingh -
