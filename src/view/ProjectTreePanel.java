@@ -78,6 +78,7 @@ public class ProjectTreePanel extends JPanel{
 
         findButton = new JButton("Find");
         findButton.setBounds((width / 2) - 30, height - 25, 60, 20);
+        findButton.addActionListener(this::findItem);
         this.add(findButton);
 
         deleteButton = new JButton("Delete");
@@ -109,6 +110,25 @@ public class ProjectTreePanel extends JPanel{
             model.setSelection(selectedItem);
             model.deleteTreeEntry();
         }
+    }
+
+    private void findItem(ActionEvent e) {
+        JFrame searchBox = new JFrame("Find Project or Task");
+        searchBox.setLayout(null);
+        searchBox.setVisible(true);
+        searchBox.setSize(350,250);
+
+        JTextField textSearch = new JTextField();
+        textSearch.setBounds(75, 60, 200, 30);
+        searchBox.add(textSearch);
+
+        JButton find = new JButton("Find");
+        find.setBounds(145, 100, 60, 30);
+        searchBox.add(find);
+
+        JLabel prompt = new JLabel("Search for an existing Project or Task");
+        prompt.setBounds(60,30,300,30);
+        searchBox.add(prompt);
     }
 
     @Override
