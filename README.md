@@ -1,8 +1,24 @@
-# Task Project Manager
+# Project & Task Manager (Introduction)
 
-This project is highly inspired from the Temperature recording application
-designed and developed by Errol Thompson.
+The project is designed under the object of creating a task management system
+where tasks and projects are organised in a tree structure such that a project can 
+have sub-projects or tasks, and the tasks can have further sub-tasks. Therefore, 
+the purpose of the assignment is to create an utmost of 3 Level General tree where 
+Level 0 is represented by the project, Level 1 could be Sub-project or Task, Level 2
+states Task or Sub-task and Level 3 constitutes sub-task (if any). Moreover, the
+assignment brief instated a challenge task which was to put a sorting technique in place 
+based on Covey's philosophy, but due to lack of time this task wasn't accomplished. 
+Furthermore, the requirement of showing a completed and missed task(s) was not established due to the
+aforementioned reason.
+Finally, the assignment thus submitted involves a fully functioning User Interface required 
+to create a tree structure, hence the program is able to display the entered information in
+form of directory; making it easier for the user to follow through the projects and tasks. The 
+program also involves most of the relevant error handling techniques such as prohibiting the user from entering due date which
+comes before the present day's date; or the due date assigned to task which comes before the parent
+project's or sub-project's due date and so on.
 
+[This project is highly inspired from the Temperature recording application
+designed and developed by Errol Thompson.]
 
 # References
 ********************************************************************

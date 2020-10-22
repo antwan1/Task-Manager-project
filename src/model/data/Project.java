@@ -55,7 +55,7 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
     public String toString() {
         return ("ROOT".equals(getTitle()) ? "" : getTitle() + ": ") + getDescription() +
                 (getDueDate().compareTo(Calendar.getInstance()) < 1
-                        ? "" :  " (Due on " +
+                        ? "" : " (Due on " +
                         DateFormat.getDateInstance(DateFormat.MEDIUM).format(dueDate.getTime()) + ")");
     }
 
@@ -107,30 +107,16 @@ public class Project extends AbstractProjectTask implements Comparable<Project> 
             (String title, String description, Project parent, Calendar dueDate) {
         Errors errorMessage = verifyTitleAndDescription(title, description, ProjectOrTask.PROJECT, dueDate);
         errorMessage.add(parent == null ? "No parent project provided" : null);
-        if((parent.getDueDate()).compareTo(dueDate) < 1 &&
-                ((parent.getDueDate()).compareTo(Calendar.getInstance()) == 1)){
-            errorMessage.add("Due date cannot be higher than Parent Project."); }
+        if ((parent.getDueDate()).compareTo(dueDate) < 1 &&
+                ((parent.getDueDate()).compareTo(Calendar.getInstance()) == 1)) {
+            errorMessage.add("Due date cannot be higher than Parent Project.");
+        }
         if (errorMessage.size() != 0) {
             return new Validation<>(errorMessage);
         }
         return new Validation<>(new Project(title, description, parent, dueDate));
     }
-    {
-
-        try{
-            FileWriter ProjectFile = new FileWriter("Project.txt");
-            ProjectFile.write(title);
-            ProjectFile.write(description);
-            ProjectFile.close();
-
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-    }
-
-
-    }
+}
 
 
 
