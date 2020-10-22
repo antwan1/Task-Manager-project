@@ -102,16 +102,10 @@ public class ProjectTreePanel extends JPanel{
      */
 
     private void deleteSelectedItem(ActionEvent actionEvent) {
-
-//        JFrame deleteFrame = new JFrame("Delete");
-//        deleteFrame.setVisible(true);
-//        deleteFrame.setSize(400, 200);
-//        JLabel prompt = new JLabel("Are you sure you want to delete this?");
-//        JPanel deletePanel = new JPanel();
-//        deleteFrame.add(deletePanel);
-//        deletePanel.add(prompt);
-        model.setSelection(selectedItem);
-        model.deleteTreeEntry();
+        int opt = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this?", "Delete", JOptionPane.YES_NO_OPTION);
+        if (opt ==1) {
+            //Input code to delete the selectedItem, if "No" is selected, close frame.
+        }
     }
 
     @Override
